@@ -1,0 +1,13 @@
+#ifndef _SQLITE_ROT13_H
+#define _SQLITE_ROT13_H
+
+#include "sqlite3ext.h"
+
+#define SQLITE_ROT13_VERSION "@SQLITE_ROT13_VERSION@"
+
+int sqlite3_rot_init(
+    sqlite3 *db,
+    char **pzErrMsg,
+    const sqlite3_api_routines *pApi);
+
+#endif // _SQLITE_ROT13_H

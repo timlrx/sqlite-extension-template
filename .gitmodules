@@ -1,0 +1,3 @@
+[submodule "vendor/sqlite"]
+	path = vendor/sqlite
+	url = https://github.com/sqlite/sqlite
