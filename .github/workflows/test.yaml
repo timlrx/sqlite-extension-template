@@ -111,7 +111,7 @@ jobs:
           name: ${{ env.ARTIFACT-MACOS-X86_64-WHEELS }}
           path: dist/debug/wheels
       - run: brew install llvm
-      - run: /usr/local/opt/python@3/libexec/bin/pip install --find-links dist/debug/wheels sqlite_vss
+      - run: /usr/local/opt/python@3/libexec/bin/pip install --find-links dist/debug/wheels sqlite_rot13
       - run: find dist
       - run: make test-loadable python=/usr/local/opt/python@3/libexec/bin/python
       - run: make test-python python=/usr/local/opt/python@3/libexec/bin/python

@@ -72,23 +72,23 @@ $(TARGET_LOADABLE): export SQLITE_CMAKE_VERSION = $(CMAKE_VERSION)
 $(TARGET_LOADABLE_RELEASE): export SQLITE_CMAKE_VERSION = $(CMAKE_VERSION)
 
 $(TARGET_LOADABLE): $(PREFIX) src/rot13.c
-	cmake -B build; make -C build
+	cmake -S . -B build && cmake --build build
 	cp build/rot13.$(LOADABLE_EXTENSION) $(TARGET_LOADABLE_FILE)
 
 $(TARGET_LOADABLE_RELEASE): $(PREFIX) src/rot13.c
-	cmake -DCMAKE_BUILD_TYPE=Release -B build_release; make -C build_release
+	cmake -DCMAKE_BUILD_TYPE=Release -S . -B build_release && cmake --build build_release
 	cp build_release/rot13.$(LOADABLE_EXTENSION) $(TARGET_LOADABLE_RELEASE_FILE)
 
 $(TARGET_STATIC): export SQLITE_CMAKE_VERSION = $(CMAKE_VERSION)
 $(TARGET_STATIC_RELEASE): export SQLITE_CMAKE_VERSION = $(CMAKE_VERSION)
 
 $(TARGET_STATIC): $(prefix) VERSION src/rot13.c
-	cmake -B build; make -C build
+	cmake -S . -B build && cmake --build build
 	cp build/libsqlite_rot13.a $(TARGET_STATIC_FILE)
 	cp build/rot13.h $(TARGET_STATIC_VECTOR_H)
 
 $(TARGET_STATIC_RELEASE): $(prefix) VERSION src/rot13.c
-	cmake -DCMAKE_BUILD_TYPE=Release -B build_release; make -C build_release
+	cmake -DCMAKE_BUILD_TYPE=Release -S . -B build_release && cmake --build build_release
 	cp build_release/libsqlite_rot13.a $(TARGET_STATIC_RELEASE_FILE)
 	cp build_release/rot13.h $(TARGET_STATIC_RELEASE_VECTOR_H)
 
