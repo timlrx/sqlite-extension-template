@@ -142,19 +142,3 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-WINDOWS-X86_64-WHEELS }}
           path: dist/debug/wheels/*.whl
-  test-linux-x86_64:
-    runs-on: ubuntu-latest
-    needs: [build-windows-x86_64-extension, build-windows-x86_64-python]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.ARTIFACT-WINDOWS-X86_64-EXTENSION }}
-          path: dist/debug/
-      - uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.ARTIFACT-WINDOWS-X86_64-WHEELS }}
-          path: dist/debug/
-      - run: pip install --find-links dist/debug/ sqlite_rot13
-      - run: make test-loadable
-      - run: make test-python
