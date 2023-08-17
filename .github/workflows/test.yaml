@@ -129,7 +129,7 @@ jobs:
         with:
           release: false
           install: >-
-            curl
+            make
             unzip
             python3-pip
             mingw-w64-x86_64-cmake
