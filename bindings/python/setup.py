@@ -20,7 +20,7 @@ elif system == 'Linux':
   if machine not in ['x86_64']:
     raise Exception("unsupported platform")
 elif system == 'Windows':
-  if machine not in ['x86_64']:
+  if machine not in ['AMD64']:
     raise Exception("unsupported platform")
 else: 
   raise Exception("unsupported platform")
