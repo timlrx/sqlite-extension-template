@@ -17,7 +17,7 @@ env:
   ARTIFACT-WINDOWS-X86_64-WHEELS: sqlite-ext-windows-x86_64-wheels
 jobs:
   build-linux-x86_64-extension:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -61,7 +61,7 @@ jobs:
       - run: make test-loadable
       - run: make test-python
   build-macos-x86_64-extension:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
         with:
