@@ -116,7 +116,7 @@ jobs:
           path: dist/debug/
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.10.8" # https://github.com/actions/setup-python/issues/540
+          python-version: "3.11" # https://github.com/actions/setup-python/issues/540
       - run: pip install --find-links dist/debug/ sqlite_rot13
       - run: find dist
       - run: make test-loadable
