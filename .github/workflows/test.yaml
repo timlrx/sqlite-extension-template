@@ -62,6 +62,14 @@ jobs:
       - run: pip install --find-links dist/debug/ sqlite_rot13
       - run: make test-loadable
       - run: make test-python
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+      - run: sudo apt-get update -y && sudo apt-get install -y cmake
+      - run: make wasm
   build-macos-x86_64-extension:
     runs-on: macos-latest
     steps:
