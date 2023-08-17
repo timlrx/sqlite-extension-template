@@ -14,13 +14,13 @@
 ** initialization of the library will fail.
 */
 
-#include "sqlite3.h"
 #include <stdio.h>
-#include "rot13.h"
-#include "rot13.c"
 
-int sqlite3_wasm_extra_init(const char *z)
-{
+#include "rot13.c"
+#include "rot13.h"
+#include "sqlite3.h"
+
+int sqlite3_wasm_extra_init(const char *z) {
   int nErr = 0;
   nErr += sqlite3_auto_extension((void (*)())sqlite3_rot_init);
   return nErr ? SQLITE_ERROR : SQLITE_OK;
