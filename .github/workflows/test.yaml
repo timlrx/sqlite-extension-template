@@ -38,6 +38,8 @@ jobs:
           name: ${{ env.ARTIFACT-LINUX-X86_64-EXTENSION }}
           path: dist/debug/
       - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
@@ -91,6 +93,8 @@ jobs:
           name: ${{ env.ARTIFACT-MACOS-X86_64-EXTENSION }}
           path: dist/debug/
       - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
@@ -152,6 +156,8 @@ jobs:
           name: ${{ env.ARTIFACT-WINDOWS-X86_64-EXTENSION }}
           path: dist/debug/
       - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
