@@ -37,7 +37,7 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-LINUX-X86_64-EXTENSION }}
           path: dist/debug/
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
@@ -90,7 +90,7 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-MACOS-X86_64-EXTENSION }}
           path: dist/debug/
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
@@ -110,7 +110,9 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-MACOS-X86_64-WHEELS }}
           path: dist/debug/wheels
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10.8" # https://github.com/actions/setup-python/issues/540
       - run: pip install --find-links dist/debug/wheels sqlite_rot13
       - run: find dist
       - run: make test-loadable
@@ -149,7 +151,7 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-WINDOWS-X86_64-EXTENSION }}
           path: dist/debug/
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
       - run: pip install wheel
       - run: make python
       - uses: actions/upload-artifact@v3
