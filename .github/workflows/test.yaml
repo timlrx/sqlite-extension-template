@@ -114,13 +114,10 @@ jobs:
         with:
           name: ${{ env.ARTIFACT-MACOS-X86_64-WHEELS }}
           path: dist/debug/
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.11" # https://github.com/actions/setup-python/issues/540
-      - run: pip install --find-links dist/debug/ sqlite_rot13
+      - run: /usr/local/opt/python@3/libexec/bin/pip install --find-links dist/debug/ sqlite_rot13
       - run: find dist
-      - run: make test-loadable
-      - run: make test-python
+      - run: make test-loadable python=/usr/local/opt/python@3/libexec/bin/python
+      - run: make test-python python=/usr/local/opt/python@3/libexec/bin/python
   build-windows-x86_64-extension:
     runs-on: windows-latest
     defaults:
