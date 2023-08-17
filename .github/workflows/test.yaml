@@ -116,7 +116,7 @@ jobs:
       - run: make test-loadable python=/usr/local/opt/python@3/libexec/bin/python
       - run: make test-python python=/usr/local/opt/python@3/libexec/bin/python
   build-windows-x86_64-extension:
-    runs-on: windows-2022
+    runs-on: windows-latest
     defaults:
       run:
         shell: msys2 {0}
@@ -141,7 +141,7 @@ jobs:
           name: ${{ env.ARTIFACT-WINDOWS-X86_64-EXTENSION }}
           path: dist/debug/*
   build-windows-x86_64-python:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build-windows-x86_64-extension]
     steps:
       - uses: actions/checkout@v3
@@ -157,7 +157,7 @@ jobs:
           name: ${{ env.ARTIFACT-WINDOWS-X86_64-WHEELS }}
           path: dist/debug/wheels/*.whl
   test-windows-x86_64:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build-windows-x86_64-extension, build-windows-x86_64-python]
     steps:
       - uses: actions/checkout@v3
