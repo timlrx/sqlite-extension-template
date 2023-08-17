@@ -107,14 +107,18 @@ static-release: $(TARGET_STATIC_RELEASE)
 clean: 
 	rm -r dist/*
 
-wasm: $(TARGET_LOADABLE)
+wasm-build: $(TARGET_LOADABLE)
 	make -C build wasm
+
+wasm: wasm-build
 	mkdir -p dist/debug/wasm
 	cp -r ${TARGET_WASM} dist/debug/wasm/
 	echo "✅ generated wasm"
 
-wasm-release: $(TARGET_LOADABLE_RELEASE)
+wasm-build-release: $(TARGET_LOADABLE_RELEASE)
 	make -C build_release wasm
+
+wasm-release: wasm-build-release
 	mkdir -p dist/release/wasm
 	cp -r ${TARGET_WASM_RELEASE} dist/release/wasm/
 	cp dist/release/wasm/index-dist.html dist/release/wasm/index.html
@@ -150,5 +154,5 @@ test:
 
 .PHONY: clean test \
 	loadable loadable-release static static-release \
-	wasm wasm-release \
+	wasm-build wasm wasm-release \
 	python python-release python-versions version
